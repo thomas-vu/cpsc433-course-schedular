@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Lab2 extends Course
 {
-    private int lecture_section = 0;
+    private int lecture_id = 0;
 
     public Lab2(String name, int number)
     {
@@ -15,11 +15,11 @@ public class Lab2 extends Course
     public Lab2(String name, int number, int lecture)
     {
         super(name, number);
-        lecture_section = lecture;
+        lecture_id = lecture;
     }
 
     public int getLectureSection()
     {
-        return lecture_section;
+        return lecture_id;
     }
 }

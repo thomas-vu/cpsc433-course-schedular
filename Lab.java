@@ -10,7 +10,7 @@ public class Lab implements Assignable
     private List<Slots> unwanted = new ArrayList<Slots>();
     private HashMap<Assignable, Slots> pairs = new HashMap<Assignable, Slots>();
 
-    private int lecture_section = 0;
+    private int lecture_id = 0;
 
     public Lab(String name, int number)
     {
@@ -23,7 +23,7 @@ public class Lab implements Assignable
     {
         course_id = name;
         section = number;
-        lecture_section = lecture;
+        lecture_id = lecture;
     }
 
     public String getID()
@@ -33,7 +33,7 @@ public class Lab implements Assignable
 
     public int getLectureSection()
     {
-        return lecture_section;
+        return lecture_id;
     }
 
     public int getSection()
