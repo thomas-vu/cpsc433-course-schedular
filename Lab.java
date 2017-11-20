@@ -7,8 +7,8 @@ public class Lab implements Assignable
     private String course_id;
     private int section;
     private HashMap<Assignable, Assignable> notCompatible = new HashMap<Assignable, Assignable>();
-    private List<Slots> unwanted = new ArrayList<Slots>();
-    private HashMap<Assignable, Slots> pairs = new HashMap<Assignable, Slots>();
+    private List<Slot> unwanted = new ArrayList<Slot>();
+    private HashMap<Assignable, Slot> pairs = new HashMap<Assignable, Slot>();
 
     private int lecture_id = 0;
 
@@ -51,22 +51,22 @@ public class Lab implements Assignable
         notCompatible.put(assign1, assign2);
     }
 
-    public List<Slots> getUnwantedSlots()
+    public List<Slot> getUnwantedSlots()
     {
         return unwanted;
     }
 
-    public void addUnwantedSlot(Slots toAdd)
+    public void addUnwantedSlot(Slot toAdd)
     {
         unwanted.add(toAdd);
     }
 
-    public HashMap<Assignable, Slots> getPairs()
+    public HashMap<Assignable, Slot> getPairs()
     {
         return pairs;
     }
 
-    public void addPair(Assignable assign1, Slots slot)
+    public void addPair(Assignable assign1, Slot slot)
     {
         pairs.put(assign1, slot);
     }

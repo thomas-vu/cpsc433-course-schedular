@@ -11,12 +11,12 @@ public interface Assignable
 
     public void addNotCompatible(Assignable assign1, Assignable assign2);
 
-    public List<Slots> getUnwantedSlots();
+    public List<Slot> getUnwantedSlots();
 
-    public void addUnwantedSlot(Slots toAdd);
+    public void addUnwantedSlot(Slot toAdd);
 
-    public HashMap<Assignable, Slots> getPairs();
+    public HashMap<Assignable, Slot> getPairs();
 
-    public void addPair(Assignable assign1, Slots slot);
+    public void addPair(Assignable assign1, Slot slot);
 
 }
