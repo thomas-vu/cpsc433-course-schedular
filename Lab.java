@@ -91,4 +91,13 @@ public class Lab implements Assignable
 	    return false;
 	return true;
     }
+
+    @Override
+    public String toString()
+    {
+	return courseType + " " + courseNumber +
+	    (lecture_id == 0 ? "" : " LEC " + lecture_id) +
+	    " TUT " + section;
+    }
+
 }

@@ -76,4 +76,10 @@ public class Course implements Assignable
 	    return false;
 	return true;
     }
+
+    @Override
+    public String toString()
+    {
+	return courseType + " " + courseNumber + " LEC " + section;
+    }
 }
