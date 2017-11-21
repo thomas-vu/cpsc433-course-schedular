@@ -78,4 +78,17 @@ public class Lab implements Assignable
     {
         pairs.put(assign1, slot);
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+	if (obj == null || Lab.class != obj.getClass())
+	    return false;
+	Lab other = (Lab) obj;
+	if (!courseType.equals(other.getCourseType()) ||
+	    courseNumber != other.getCourseNumber() ||
+	    section != other.getSection())
+	    return false;
+	return true;
+    }
 }

@@ -22,14 +22,35 @@ public class CourseSlot implements Slot
 	this.day = day;
 	this.startTime = start;
     }
-    
+
     public void addPreference(Assignable toAdd)
     {
         preferences.add(toAdd);
     }
 
+    public String getDay()
+    {
+	return day;
+    }
+
+    public int getStartTime()
+    {
+	return startTime;
+    }
+    
     public ArrayList<Assignable> getPreferences()
     {
         return preferences;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+	if (obj == null || CourseSlot.class != obj.getClass())
+	    return false;
+	CourseSlot other = (CourseSlot) obj;
+	if (!day.equals(other.getDay()) || startTime != other.getStartTime())
+	    return false;
+	return true;
     }
 }

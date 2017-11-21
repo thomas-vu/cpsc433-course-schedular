@@ -63,4 +63,17 @@ public class Course implements Assignable
     {
         pairs.put(assign1, slot);
     }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+	if (obj == null || Course.class != obj.getClass())
+	    return false;
+	Course other = (Course) obj;
+	if (!courseType.equals(other.getCourseType()) ||
+	    courseNumber != other.getCourseNumber() ||
+	    section != other.getSection())
+	    return false;
+	return true;
+    }
 }

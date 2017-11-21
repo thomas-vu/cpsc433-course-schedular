@@ -28,8 +28,29 @@ public class LabSlot implements Slot
         preferences.add(toAdd);
     }
 
+    public String getDay()
+    {
+	return day;
+    }
+
+    public int getStartTime()
+    {
+	return startTime;
+    }
+
     public ArrayList<Assignable> getPreferences()
     {
         return preferences;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+	if (obj == null || LabSlot.class != obj.getClass())
+	    return false;
+	LabSlot other = (LabSlot) obj;
+	if (!day.equals(other.getDay()) || startTime != other.getStartTime())
+	    return false;
+	return true;
     }
 }
