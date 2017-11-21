@@ -6,15 +6,15 @@ public class Lab2 extends Course
 {
     private int lecture_id = 0;
 
-    public Lab2(String name, int number)
+    public Lab2(String name, int number, int section)
     {
         // some lectures only have 1 section, so we don't need to get the lecture section for labs/tuts
-        super(name, number);
+        super(name, number, section);
     }
 
-    public Lab2(String name, int number, int lecture)
+    public Lab2(String name, int number, int section, int lecture)
     {
-        super(name, number);
+        super(name, number, section);
         lecture_id = lecture;
     }
 

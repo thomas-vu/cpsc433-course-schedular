@@ -4,31 +4,39 @@ import java.util.HashMap;
 
 public class Lab implements Assignable
 {
-    private String course_id;
+    private String courseType;
+    private int courseNumber;
     private int section;
     private HashMap<Assignable, Assignable> notCompatible = new HashMap<Assignable, Assignable>();
-    private List<Slots> unwanted = new ArrayList<Slots>();
-    private HashMap<Assignable, Slots> pairs = new HashMap<Assignable, Slots>();
+    private List<Slot> unwanted = new ArrayList<Slot>();
+    private HashMap<Assignable, Slot> pairs = new HashMap<Assignable, Slot>();
 
     private int lecture_id = 0;
 
-    public Lab(String name, int number)
+    public Lab(String name, int number, int section)
     {
         // some lectures only have 1 section so we don't need to get the lecture section for labs/tuts
-        course_id = name;
-        section = number;
+        courseType = name;
+        courseNumber = number;
+        this.section = section;
     }
 
-    public Lab(String name, int number, int lecture)
+    public Lab(String name, int number, int section, int lecture)
     {
-        course_id = name;
-        section = number;
+        courseType = name;
+        courseNumber = number;
+        this.section = section;
         lecture_id = lecture;
     }
 
-    public String getID()
+    public String getCourseType()
     {
-        return course_id;
+        return courseType;
+    }
+
+    public int getCourseNumber()
+    {
+        return courseNumber;
     }
 
     public int getLectureSection()
@@ -51,22 +59,22 @@ public class Lab implements Assignable
         notCompatible.put(assign1, assign2);
     }
 
-    public List<Slots> getUnwantedSlots()
+    public List<Slot> getUnwantedSlots()
     {
         return unwanted;
     }
 
-    public void addUnwantedSlot(Slots toAdd)
+    public void addUnwantedSlot(Slot toAdd)
     {
         unwanted.add(toAdd);
     }
 
-    public HashMap<Assignable, Slots> getPairs()
+    public HashMap<Assignable, Slot> getPairs()
     {
         return pairs;
     }
 
-    public void addPair(Assignable assign1, Slots slot)
+    public void addPair(Assignable assign1, Slot slot)
     {
         pairs.put(assign1, slot);
     }

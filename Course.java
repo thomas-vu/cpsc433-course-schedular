@@ -4,22 +4,30 @@ import java.util.HashMap;
 
 public class Course implements Assignable
 {
-    private String course_id;
+    private String courseType;
+    private int courseNumber;
     private int section;
     private HashMap<Assignable, Assignable> notCompatible = new HashMap<Assignable, Assignable>();
-    private List<Slots> unwanted = new ArrayList<Slots>();
-    private HashMap<Assignable, Slots> pairs = new HashMap<Assignable, Slots>();
+    private List<Slot> unwanted = new ArrayList<Slot>();
+    private HashMap<Assignable, Slot> pairs = new HashMap<Assignable, Slot>();
 
-    public Course(String name, int number)
+    public Course(String name, int number, int section)
     {
-        course_id = name;
-        section = number;
+        courseType = name;
+        courseNumber = number;
+        this.section = section;
     }
 
-    public String getID()
+    public String getCourseType()
     {
-        return course_id;
+        return courseType;
     }
+
+    public int getCourseNumber()
+    {
+        return courseNumber;
+    }
+
 
     public int getSection()
     {
@@ -36,22 +44,22 @@ public class Course implements Assignable
         notCompatible.put(assign1, assign2);
     }
 
-    public List<Slots> getUnwantedSlots()
+    public List<Slot> getUnwantedSlots()
     {
         return unwanted;
     }
 
-    public void addUnwantedSlot(Slots toAdd)
+    public void addUnwantedSlot(Slot toAdd)
     {
         unwanted.add(toAdd);
     }
 
-    public HashMap<Assignable, Slots> getPairs()
+    public HashMap<Assignable, Slot> getPairs()
     {
         return pairs;
     }
 
-    public void addPair(Assignable assign1, Slots slot)
+    public void addPair(Assignable assign1, Slot slot)
     {
         pairs.put(assign1, slot);
     }
