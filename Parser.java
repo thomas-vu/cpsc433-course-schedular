@@ -18,10 +18,10 @@ public class Parser {
 
     private CourseSlot parseCourseSlot(String slotInfo) throws IllegalArgumentException  {
 	String[] splitInfo = slotInfo.split(", {1,2}");
-	if (splitInfo.length() == 2)
-	    return new CourseSlot(splitInfo[0], Parser.dehumanize(splitInfo[1]));
+	if (splitInfo.length == 2)
+	    return new CourseSlot(splitInfo[0], Parser.dehumanizeTime(splitInfo[1]));
 	return new CourseSlot(splitInfo[0],
-			      Parser.dehumanize(splitInfo[1]),
+			      Parser.dehumanizeTime(splitInfo[1]),
 			      Integer.parseInt(splitInfo[2]),
 			      Integer.parseInt(splitInfo[3]));
     }
@@ -39,10 +39,10 @@ public class Parser {
     
     private LabSlot parseLabSlot(String slotInfo) throws IllegalArgumentException {
 	String [] splitInfo = slotInfo.split(", {1,2}");
-	if (splitInfo.length() == 2)
-	    return new LabSlot(splitInfo[0], Parser.dehumanize(splitInfo[1]));
+	if (splitInfo.length == 2)
+	    return new LabSlot(splitInfo[0], Parser.dehumanizeTime(splitInfo[1]));
 	return new LabSlot(splitInfo[0],
-			   Parser.dehumanize(splitInfo[1]),
+			   Parser.dehumanizeTime(splitInfo[1]),
 			   Integer.parseInt(splitInfo[2]),
 			   Integer.parseInt(splitInfo[3]));
     }
@@ -71,14 +71,14 @@ public class Parser {
 	    String courseInfo = sc.nextLine();
 	    if (courseInfo.equals(""))
 		break;
-	    courses.add(parseCourse(courseInfO));
+	    courses.add(parseCourse(courseInfo));
 	}
 	return courses;
     }
 
     private Lab parseLab(String labInfo) throws IllegalArgumentException {
-	String[] splitInfo = courseInfo.split(" ");
-	if (splitInfo.length() == 4)
+	String[] splitInfo = labInfo.split(" ");
+	if (splitInfo.length == 4)
 	    return new Lab(splitInfo[0],
 			   Integer.parseInt(splitInfo[1]),
 			   Integer.parseInt(splitInfo[3]));
@@ -111,14 +111,15 @@ public class Parser {
 	    
 	    String firstInfo = line.split(", ")[0];
 	    String secondInfo = line.split(", ")[1];
+	    Assignable first, second;
 	    if (firstInfo.contains("TUT"))
-		Assignable first = parseLab(firstInfo);
+		first = parseLab(firstInfo);
 	    else
-		Assignable first = parseCourse(firstInfo);
+		first = parseCourse(firstInfo);
 	    if (secondInfo.contains("TUT"))
-		Assignable second = parseLab(secondInfo);
+		second = parseLab(secondInfo);
 	    else
-		Assignable second = parseCourse(secondInfo);
+		second = parseCourse(secondInfo);
 	    assignablePairs.put(first, second);
 	}
 	return assignablePairs;
@@ -136,18 +137,19 @@ public class Parser {
 	    String[] splitLine = line.split(", ");
 	    String firstInfo = splitLine[0];
 	    String secondInfo = splitLine[1] + ", " + splitLine[2];
-
+	    Assignable first;
+	    Slot second;
 	    if (firstInfo.contains("TUT")) {
-		Assignable first = parseLab(firstInfo);
-		Assignable second = parseLabSlot(secondInfo);
+		first = parseLab(firstInfo);
+		second = parseLabSlot(secondInfo);
 	    }
 	    else {
-		Assignable first = parseCourse(firstInfo);
-		Assignable second = parseCourseSlot(secondInfo);
+		first = parseCourse(firstInfo);
+		second = parseCourseSlot(secondInfo);
 	    }
 	    assignableSlotPairs.put(first, second);
 	}
-	return assignableSlotPairs
+	return assignableSlotPairs;
     }
         
     private static int dehumanizeTime(String time) throws IllegalArgumentException {

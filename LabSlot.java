@@ -17,6 +17,12 @@ public class LabSlot implements Slot
         this.min = min;
     }
 
+    public LabSlot(String day, int start)
+    {
+	this.day = day;
+	this.startTime = start;
+    }
+
     public void addPreference(Assignable toAdd)
     {
         preferences.add(toAdd);
