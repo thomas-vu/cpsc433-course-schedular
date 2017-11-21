@@ -9,6 +9,12 @@ public class LabSlot implements Slot
     private int max;
     private ArrayList<Assignable> preferences = new ArrayList<Assignable>();
 
+    public LabSlot(String day, int start)
+    {
+        this.day = day;
+        this.startTime = start;
+    }
+
     public LabSlot(String day, int start, int max, int min)
     {
         this.day = day;
