@@ -1,5 +1,7 @@
-all: base
+all: base test
 debug: base
+test:
+	javac -cp .:/usr/share/java/hamcrest/core.jar:/usr/share/java/junit.jar ParserTest.java
 base:
 	javac Assignable.java
 	javac Slot.java
@@ -10,5 +12,6 @@ base:
 	javac LabSlot.java
 	javac Parser.java
 clean:
-	rm *.class
+	rm -rf *.class
+	rm -rf *~
 .PHONY: all clean
