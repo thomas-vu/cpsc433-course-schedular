@@ -152,7 +152,7 @@ public class Parser {
 	return assignableSlotPairs;
     }
         
-    private static int dehumanizeTime(String time) throws IllegalArgumentException {
+    public static int dehumanizeTime(String time) throws IllegalArgumentException {
 	time = time.length() == 5 ? time : "0" + time;
 	if (Integer.parseInt(time.substring(0, 2)) > 24)
 	    throw new IllegalArgumentException("Times must be in increments of " +
@@ -166,7 +166,7 @@ public class Parser {
 					       "30 minutes from the hour.");
     }
 
-    private static String humanizeTime(int time) throws IllegalArgumentException {
+    public static String humanizeTime(int time) throws IllegalArgumentException {
 	if (time % 50 != 0 || time < 0 || time > 2400)
 	    throw new IllegalArgumentException("Times must be in increments of " +
 					       "30 minutes from the hour.");
