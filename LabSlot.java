@@ -7,7 +7,6 @@ public class LabSlot implements Slot
     private int startTime;
     private int min;
     private int max;
-    private Assignable[] assigned;    // list of items assigned to this slot. Not sure if we need but will add for now
     private ArrayList<Assignable> preferences = new ArrayList<Assignable>();
 
     public LabSlot(String day, int start, int max, int min)
@@ -27,11 +26,5 @@ public class LabSlot implements Slot
     public ArrayList<Assignable> getPreferences()
     {
         return preferences;
-    }
-
-    // Can delete if we are not we are not keeping a list of assigned items
-    public Assignable[] getAssigned()
-    {
-        return assigned;
     }
 }

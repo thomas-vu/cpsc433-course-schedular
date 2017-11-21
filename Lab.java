@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 public class Lab implements Assignable
 {
-    private String course_id;
+    private String courseType;
+    private int courseNumber;
     private int section;
     private HashMap<Assignable, Assignable> notCompatible = new HashMap<Assignable, Assignable>();
     private List<Slot> unwanted = new ArrayList<Slot>();
@@ -12,23 +13,36 @@ public class Lab implements Assignable
 
     private int lecture_id = 0;
 
-    public Lab(String name, int number)
+    public Lab(String name, int number, int section)
     {
         // some lectures only have 1 section so we don't need to get the lecture section for labs/tuts
-        course_id = name;
-        section = number;
+        courseType = name;
+        courseNumber = number
+        this.section = section;
     }
 
-    public Lab(String name, int number, int lecture)
+    public Lab(String name, int number, int section, int lecture)
     {
-        course_id = name;
-        section = number;
+        courseType = name;
+        courseNumber = number
+        this.section = section;
         lecture_id = lecture;
     }
 
-    public String getID()
+    public String getCourseType()
     {
-        return course_id;
+        return courseType;
+    }
+
+    public int getCourseNumber()
+    {
+        return courseNumber;
+    }
+
+
+    public int getSection()
+    {
+        return section;
     }
 
     public int getLectureSection()

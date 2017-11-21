@@ -4,22 +4,30 @@ import java.util.HashMap;
 
 public class Course implements Assignable
 {
-    private String course_id;
+    private String courseType;
+    private int courseNumber;
     private int section;
     private HashMap<Assignable, Assignable> notCompatible = new HashMap<Assignable, Assignable>();
     private List<Slot> unwanted = new ArrayList<Slot>();
     private HashMap<Assignable, Slot> pairs = new HashMap<Assignable, Slot>();
 
-    public Course(String name, int number)
+    public Course(String name, int number, int section)
     {
-        course_id = name;
-        section = number;
+        courseType = name;
+        courseNumber = number;
+        this.section = section;
     }
 
-    public String getID()
+    public String getCourseType()
     {
-        return course_id;
+        return courseType;
     }
+
+    public int getCourseNumber()
+    {
+        return courseNumber;
+    }
+
 
     public int getSection()
     {
