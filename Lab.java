@@ -17,14 +17,14 @@ public class Lab implements Assignable
     {
         // some lectures only have 1 section so we don't need to get the lecture section for labs/tuts
         courseType = name;
-        courseNumber = number
+        courseNumber = number;
         this.section = section;
     }
 
     public Lab(String name, int number, int section, int lecture)
     {
         courseType = name;
-        courseNumber = number
+        courseNumber = number;
         this.section = section;
         lecture_id = lecture;
     }
@@ -37,12 +37,6 @@ public class Lab implements Assignable
     public int getCourseNumber()
     {
         return courseNumber;
-    }
-
-
-    public int getSection()
-    {
-        return section;
     }
 
     public int getLectureSection()

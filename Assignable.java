@@ -3,7 +3,9 @@ import java.util.HashMap;
 
 public interface Assignable
 {
-    public String getID();
+    public String getCourseType();
+
+    public int getCourseNumber();
 
     public int getSection();
 

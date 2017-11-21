@@ -15,7 +15,6 @@ public class LabSlot implements Slot
         this.startTime = start;
         this.max = max;
         this.min = min;
-        assigned = 0;
     }
 
     public void addPreference(Assignable toAdd)
