@@ -1,6 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Course implements Assignable
 {
@@ -77,6 +78,12 @@ public class Course implements Assignable
 	return true;
     }
 
+    @Override
+    public int hashCode()
+    {
+	return Objects.hash(courseType, courseNumber, section);
+    }
+    
     @Override
     public String toString()
     {

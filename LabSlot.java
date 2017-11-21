@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class LabSlot implements Slot
 {
@@ -53,4 +54,11 @@ public class LabSlot implements Slot
 	    return false;
 	return true;
     }
+
+    @Override
+    public int hashCode()
+    {
+	return Objects.hash(day, startTime);
+    }
+    
 }

@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CourseSlot implements Slot
 {
@@ -52,5 +53,17 @@ public class CourseSlot implements Slot
 	if (!day.equals(other.getDay()) || startTime != other.getStartTime())
 	    return false;
 	return true;
+    }
+
+    @Override
+    public int hashCode()
+    {
+	return Objects.hash(day, startTime);
+    }
+    
+    @Override
+    public String toString()
+    {
+	return day + " " + Parser.humanizeTime(startTime);
     }
 }
