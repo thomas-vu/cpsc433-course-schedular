@@ -3,16 +3,14 @@ import java.util.ArrayList;
 
 public interface Slot
 {
-    public void addPreference(Assignable toAdd);
-    public void getPreference(Assignable toAdd);
-
+    public void addPair(Assignable toAdd);
     public void addAssigned(Assignable toAdd);
-    public void getAssigned(Assignable toAdd);
 
     public int getMax();
     public int getMin();    
 
-    public ArrayList<Assignable> getPreferences();
-
+    public ArrayList<Assignable> getPairs();
+    public ArrayList<Assignable> getAssigned();
+    
     public String getSlotID();
 }

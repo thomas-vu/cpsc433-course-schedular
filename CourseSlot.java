@@ -10,7 +10,7 @@ public class CourseSlot implements Slot
     private int max;
     private String slotID;
     private ArrayList<Assignable> assigned = new ArrayList<Assignable>();
-    private ArrayList<Assignable> preferences = new ArrayList<Assignable>();
+    private ArrayList<Assignable> pairs = new ArrayList<Assignable>();
 
     public CourseSlot(String day, int start)
     {
@@ -33,11 +33,6 @@ public class CourseSlot implements Slot
 	// this.startTime = start;
     // }
 
-    public void addPreference(Assignable toAdd)
-    {
-        preferences.add(toAdd);
-    }
-
     public String getDay()
     {
 	return day;
@@ -48,21 +43,6 @@ public class CourseSlot implements Slot
 	return startTime;
     }
 
-    public ArrayList<Assignable> getPreferences()
-    {
-        return preferences;
-    }
-
-    public void addAssigned(Assignable toAdd)
-    {
-        assigned.add(toAdd);
-    }
-
-    public ArrayList<Assignable> getPreferences()
-    {
-        return assigned;
-    }
-
     public int getMax()
     {
         return max;
@@ -71,6 +51,26 @@ public class CourseSlot implements Slot
     public int getMin()
     {
         return min;
+    }
+
+    public void addAssigned(Assignable toAdd)
+    {
+        assigned.add(toAdd);
+    }
+
+    public ArrayList<Assignable> getAssigned()
+    {
+        return assigned;
+    }
+
+    public void addPair(Assignable toAdd)
+    {
+        pairs.add(toAdd);
+    }
+
+    public ArrayList<Assignable> getPairs()
+    {
+        return pairs;
     }
 
     @Override
