@@ -73,6 +73,7 @@ public class CourseSlot implements Slot
     public String toString()
     {
 	return day + " " + Parser.humanizeTime(startTime);
+    }
 
     public String getSlotID()
     {
