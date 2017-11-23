@@ -8,7 +8,14 @@ public class CourseSlot implements Slot
     private int startTime;
     private int min;
     private int max;
+    private String slotID;
     private ArrayList<Assignable> preferences = new ArrayList<Assignable>();
+
+    public CourseSlot(String day, int start)
+    {
+        this.day = day;
+        this.startTime = start;
+    }
 
     public CourseSlot(String day, int start, int max, int min)
     {
@@ -16,6 +23,7 @@ public class CourseSlot implements Slot
         this.startTime = start;
         this.max = max;
         this.min = min;
+        slotID = day + " " + String.valueOf(start);
     }
 
     public CourseSlot(String day, int start)
@@ -38,7 +46,7 @@ public class CourseSlot implements Slot
     {
 	return startTime;
     }
-    
+
     public ArrayList<Assignable> getPreferences()
     {
         return preferences;
@@ -60,10 +68,14 @@ public class CourseSlot implements Slot
     {
 	return Objects.hash(day, startTime);
     }
-    
+
     @Override
     public String toString()
     {
 	return day + " " + Parser.humanizeTime(startTime);
+
+    public String getSlotID()
+    {
+        return slotID;
     }
 }
