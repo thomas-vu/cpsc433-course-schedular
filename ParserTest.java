@@ -79,4 +79,82 @@ public class ParserTest {
 	    System.exit(1);
 	}
     }
+
+    @Test
+    public void parseLabSlot() {
+	LabSlot lsFullArgs = new LabSlot("MO", 800, 2, 1);
+	LabSlot lsHalfArgs = new LabSlot("TU", 1250);
+
+	try {
+	    Method parseLabSlotMethod = p.getClass().getDeclaredMethod("parseLabSlot",
+								       new Class[] {String.class});
+	    parseLabSlotMethod.setAccessible(true);
+
+	    assertEquals(lsFullArgs, parseLabSlotMethod.invoke(p, "MO,  8:00, 2, 1"));
+	    assertEquals(lsHalfArgs, parseLabSlotMethod.invoke(p, "TU, 12:30"));
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+    }
+
+    @Test
+    public void parseCourse() {
+	Course course = new Course("CPSC", 413, 01);
+
+	try {
+	    Method parseCourseMethod = p.getClass().getDeclaredMethod("parseCourse",
+								      new Class[] {String.class});
+	    parseCourseMethod.setAccessible(true);
+
+	    assertEquals(course, parseCourseMethod.invoke(p, "CPSC 413 LEC 01"));
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+    }
+
+    @Test
+    public void parseLab() {
+	Lab labFullArgs = new Lab("CPSC", 413, 01, 01);
+	Lab labHalfArgs = new Lab("CPSC", 413, 01);
+
+	try {
+	    Method parseLabMethod = p.getClass().getDeclaredMethod("parseLab",
+								   new Class[] {String.class});
+	    parseLabMethod.setAccessible(true);
+
+	    assertEquals(labFullArgs, parseLabMethod.invoke(p, "CPSC 413 LEC 01 TUT 01"));
+	    assertEquals(labHalfArgs, parseLabMethod.invoke(p, "CPSC 413 TUT 01"));
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+    }
+
+    @Test
+    public void parseCourseSlots() {
+	HashSet<CourseSlot> cSlots = new HashSet<CourseSlot>();
+	CourseSlot cs1 = new CourseSlot("MO", 800, 2, 1);
+	CourseSlot cs2 = new CourseSlot("TU", 800, 2, 1);
+	CourseSlot cs3 = new CourseSlot("TU", 950, 5, 0);
+	cSlots.add(cs1); cSlots.add(cs2); cSlots.add(cs3);
+	String sampleInput = ("MO,  8:00, 2, 1\n" +
+			      "TU,  8:00, 2, 1\n" +
+			      "TU,  9:30, 5, 0\n");
+	Scanner simulatedInput = new Scanner(new ByteArrayInputStream(sampleInput.getBytes()));
+
+	try {
+	    Method parseCourseSlotsMethod = p.getClass().getDeclaredMethod("parseCourseSlots");
+	    parseCourseSlotsMethod.setAccessible(true);
+	    Field sc = p.getClass().getDeclaredField("sc");
+	    sc.setAccessible(true);
+	    sc.set(p, simulatedInput);
+
+	    assertEquals(cSlots, parseCourseSlotsMethod.invoke(p));
+	} catch (Exception e) {
+	    e.printStackTrace();
+	    System.exit(1);
+	}
+    }
 }

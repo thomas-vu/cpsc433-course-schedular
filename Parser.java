@@ -111,15 +111,10 @@ public class Parser {
 	    
 	    String firstInfo = line.split(", ")[0];
 	    String secondInfo = line.split(", ")[1];
-	    Assignable first, second;
-	    if (firstInfo.contains("TUT"))
-		first = parseLab(firstInfo);
-	    else
-		first = parseCourse(firstInfo);
-	    if (secondInfo.contains("TUT"))
-		second = parseLab(secondInfo);
-	    else
-		second = parseCourse(secondInfo);
+	    Assignable first = firstInfo.contains("TUT") ?
+		parseLab(firstInfo) : parseCourse(firstInfo);
+	    Assignable second = secondInfo.contains("TUT") ?
+		parseLab(secondInfo) : parseCourse(secondInfo);
 	    assignablePairs.put(first, second);
 	}
 	return assignablePairs;
@@ -151,7 +146,32 @@ public class Parser {
 	}
 	return assignableSlotPairs;
     }
-        
+
+    private Preference parsePreference(String prefInfo)
+	throws IllegalArgumentException {
+	String[] splitInfo = prefInfo.split(", ");
+	Assignable assign = splitInfo[2].contains("TUT") ?
+	    parseLab(splitInfo[2]) : parseCourse(splitInfo[2]);
+	Slot slot = assign instanceof Course ?
+	    parseCourseSlot(splitInfo[0] + " " + splitInfo[1]) :
+	    parseLabSlot(splitInfo[0] + " " + splitInfo[1]);
+	return new Preference(slot, assign, Integer.parseInt(splitInfo[4]));
+    }
+
+    private HashSet<Preference> parsePreferences()
+	throws IllegalArgumentException {
+	HashSet<Preference> preferences = new HashSet<Preference>();
+
+	while (sc.hasNextLine()) {
+	    String line = sc.nextLine();
+	    if (line.equals(""))
+		break;
+	    
+	    preferences.add(parsePreference(line));
+	}
+	return preferences;
+    }
+    
     public static int dehumanizeTime(String time) throws IllegalArgumentException {
 	time = time.length() == 5 ? time : "0" + time;
 	if (Integer.parseInt(time.substring(0, 2)) > 24)
