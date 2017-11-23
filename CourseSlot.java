@@ -26,11 +26,11 @@ public class CourseSlot implements Slot
         slotID = day + " " + String.valueOf(start);
     }
 
-    public CourseSlot(String day, int start)
-    {
-	this.day = day;
-	this.startTime = start;
-    }
+    // public CourseSlot(String day, int start)
+    // {
+	// this.day = day;
+	// this.startTime = start;
+    // }
 
     public void addPreference(Assignable toAdd)
     {
