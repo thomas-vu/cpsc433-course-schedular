@@ -10,6 +10,7 @@ base:
 	javac Lab2.java
 	javac CourseSlot.java
 	javac LabSlot.java
+	javac Preference.java
 	javac Parser.java
 clean:
 	rm -rf *.class

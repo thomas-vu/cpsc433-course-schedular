@@ -5,7 +5,7 @@ public class Parser {
 
     private Scanner sc = new Scanner(System.in);
     
-    private HashSet<String> parseNames() {
+    public HashSet<String> parseNames() {
 	HashSet<String> names = new HashSet<String>();
 	while (sc.hasNextLine()) {
 	    String name = sc.nextLine();
@@ -26,7 +26,7 @@ public class Parser {
 			      Integer.parseInt(splitInfo[3]));
     }
 
-    private HashSet<CourseSlot> parseCourseSlots() throws IllegalArgumentException {
+    public HashSet<CourseSlot> parseCourseSlots() throws IllegalArgumentException {
 	HashSet<CourseSlot> courseSlots = new HashSet<CourseSlot>();
 	while (sc.hasNextLine()) {
 	    String slotInfo = sc.nextLine();
@@ -47,7 +47,7 @@ public class Parser {
 			   Integer.parseInt(splitInfo[3]));
     }
     
-    private HashSet<LabSlot> parseLabSlots() throws IllegalArgumentException {
+    public HashSet<LabSlot> parseLabSlots() throws IllegalArgumentException {
 	HashSet<LabSlot> labSlots = new HashSet<LabSlot>();
 	while (sc.hasNextLine()) {
 	    String slotInfo = sc.nextLine();
@@ -65,7 +65,7 @@ public class Parser {
 			  Integer.parseInt(splitInfo[3]));
     }
     
-    private HashSet<Course> parseCourses() throws IllegalArgumentException {
+    public HashSet<Course> parseCourses() throws IllegalArgumentException {
 	HashSet<Course> courses = new HashSet<Course>();
 	while (sc.hasNextLine()) {
 	    String courseInfo = sc.nextLine();
@@ -84,11 +84,11 @@ public class Parser {
 			   Integer.parseInt(splitInfo[3]));
 	return new Lab(splitInfo[0],
 		       Integer.parseInt(splitInfo[1]),
-		       Integer.parseInt(splitInfo[3]),
-		       Integer.parseInt(splitInfo[5]));
+		       Integer.parseInt(splitInfo[5]),
+		       Integer.parseInt(splitInfo[3]));
     }
 
-    private HashSet<Lab> parseLabs() throws IllegalArgumentException {
+    public HashSet<Lab> parseLabs() throws IllegalArgumentException {
 	HashSet<Lab> labs = new HashSet<Lab>();
 	while (sc.hasNextLine()) {
 	    String labInfo = sc.nextLine();
@@ -100,7 +100,7 @@ public class Parser {
     }
     
     // Use for parsing "Not compatible" and "Pair" sections
-    private HashMap<Assignable, Assignable> parseAssignablePairs()
+    public HashMap<Assignable, Assignable> parseAssignablePairs()
 	throws IllegalArgumentException {
 	HashMap<Assignable, Assignable> assignablePairs =
 	    new HashMap<Assignable, Assignable>();
@@ -121,7 +121,7 @@ public class Parser {
     }
 
     // Use for parsing "Unwanted" and "Partial Assignments" sections
-    private HashMap<Assignable, Slot> parseAssignableSlotPairs()
+    public HashMap<Assignable, Slot> parseAssignableSlotPairs()
 	throws IllegalArgumentException {
 	HashMap<Assignable, Slot> assignableSlotPairs = new HashMap<Assignable, Slot>();
 	while (sc.hasNextLine()) {
@@ -153,12 +153,12 @@ public class Parser {
 	Assignable assign = splitInfo[2].contains("TUT") ?
 	    parseLab(splitInfo[2]) : parseCourse(splitInfo[2]);
 	Slot slot = assign instanceof Course ?
-	    parseCourseSlot(splitInfo[0] + " " + splitInfo[1]) :
-	    parseLabSlot(splitInfo[0] + " " + splitInfo[1]);
-	return new Preference(slot, assign, Integer.parseInt(splitInfo[4]));
+	    parseCourseSlot(splitInfo[0] + ", " + splitInfo[1]) :
+	    parseLabSlot(splitInfo[0] + ", " + splitInfo[1]);
+	return new Preference(slot, assign, Integer.parseInt(splitInfo[3]));
     }
 
-    private HashSet<Preference> parsePreferences()
+    public HashSet<Preference> parsePreferences()
 	throws IllegalArgumentException {
 	HashSet<Preference> preferences = new HashSet<Preference>();
 
