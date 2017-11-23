@@ -9,6 +9,7 @@ public class LabSlot implements Slot
     private int min;
     private int max;
     private String slotID;
+    private ArrayList<Assignable> assigned = new ArrayList<Assignable>();
     private ArrayList<Assignable> preferences = new ArrayList<Assignable>();
 
     public LabSlot(String day, int start)
@@ -50,6 +51,26 @@ public class LabSlot implements Slot
     public ArrayList<Assignable> getPreferences()
     {
         return preferences;
+    }
+
+    public void addAssigned(Assignable toAdd)
+    {
+        assigned.add(toAdd);
+    }
+
+    public ArrayList<Assignable> getPreferences()
+    {
+        return assigned;
+    }
+
+    public int getMax()
+    {
+        return max;
+    }
+
+    public int getMin()
+    {
+        return min;
     }
 
     @Override

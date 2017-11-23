@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public class ANDTree
 {
-    // private ArrayList<Slot> state2 = new ArrayList<Slot>();
-    private ArrayList<HashMap> state = new ArrayList<HashMap>();
+    private ArrayList<Slot> state = new ArrayList<Slot>();
+    // private ArrayList<HashMap> state = new ArrayList<HashMap>();
     // private Asssignable assignment;
     // private Slot assignedTo;
     private ArrayList<Assignable> notAssigned = new ArrayList<Assignable>();
