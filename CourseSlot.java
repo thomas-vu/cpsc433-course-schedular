@@ -7,6 +7,7 @@ public class CourseSlot implements Slot
     private int startTime;
     private int min;
     private int max;
+    private String slotID;
     private ArrayList<Assignable> preferences = new ArrayList<Assignable>();
 
     public CourseSlot(String day, int start)
@@ -21,6 +22,7 @@ public class CourseSlot implements Slot
         this.startTime = start;
         this.max = max;
         this.min = min;
+        slotID = day + " " + String.valueOf(start);
     }
 
     public void addPreference(Assignable toAdd)
@@ -31,5 +33,10 @@ public class CourseSlot implements Slot
     public ArrayList<Assignable> getPreferences()
     {
         return preferences;
+    }
+
+    public String getSlotID()
+    {
+        return slotID;
     }
 }
